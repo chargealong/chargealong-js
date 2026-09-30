@@ -89,9 +89,9 @@ detail.alternatives;  // other sites close by
 ```
 
 A site's `public_id` is permanent: minted once, never derived from a source
-record. Store it. `site` rejects with `NotFound` for an id that never existed,
-and with `Gone` for a site that was removed, so code walking stored ids can
-drop the retired ones and flag the wrong ones.
+record. Store it. `site` rejects with `NotFound` for an id that never existed.
+A site that was removed still answers, with `site.status` of `removed`, so code
+walking stored ids can drop the retired ones and flag the wrong ones.
 
 ## The rest of the directory
 
@@ -122,7 +122,7 @@ only carry slugs, `countryPath`, `regionPath`, `localityPath`, `networkPath` and
 
 Every error is a `ChargeAlongError` with the service's own `title` and `detail`,
 which name the problem: `lat: must be between -90 and 90`. The others are
-`NotFound`, `Gone`, `BadRequest` and `RateLimited` (with `retryAfter` in
+`NotFound`, `BadRequest` and `RateLimited` (with `retryAfter` in
 seconds). Options outside the service's bounds throw before a request goes out.
 
 ## Other languages

@@ -29,19 +29,6 @@ export class NotFound extends ChargeAlongError {
 }
 
 /**
- * The site existed and was removed: decommissioned, or merged into another.
- *
- * Its own class rather than a NotFound, because code holding stored site ids
- * wants to tell "retired, drop it" from "never existed, something is wrong".
- */
-export class Gone extends ChargeAlongError {
-  constructor(status: number, title = "", detail = "") {
-    super(status, title, detail);
-    this.name = "Gone";
-  }
-}
-
-/**
  * The request could not be served as written. The detail names the parameter.
  *
  * Also a 422 from planTrip: there is no road route between the two points.
@@ -72,7 +59,6 @@ export class RateLimited extends ChargeAlongError {
 
 export function errorFor(status: number, title = "", detail = "", retryAfter?: number): ChargeAlongError {
   if (status === 404) return new NotFound(status, title, detail);
-  if (status === 410) return new Gone(status, title, detail);
   if (status === 429) return new RateLimited(status, title, detail, retryAfter);
   if (status >= 400 && status < 500) return new BadRequest(status, title, detail);
   return new ChargeAlongError(status, title, detail);

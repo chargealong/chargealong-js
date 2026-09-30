@@ -170,8 +170,8 @@ export class ChargeAlong {
    * and what is close by.
    *
    * The id is permanent. Rejects with {@link NotFound} for an id that never
-   * existed, and with {@link Gone} for a site that was removed, so code holding
-   * stored ids can drop the retired ones.
+   * existed. A site that was removed still answers, with `site.status` set to
+   * `removed`, so code holding stored ids can drop the retired ones.
    */
   async site(publicId: string, options: RequestOptions = {}): Promise<SiteDetail> {
     return (await this.get<SiteDetail>(`/v1/sites/${slug(publicId, "site id")}`, {}, options)).data;

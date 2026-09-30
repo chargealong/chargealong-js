@@ -8,8 +8,8 @@ First release.
   directory: `countries`, `overview`, `country`, `region`, `networks`,
   `network`, `locality` and `redirect`. The whole read surface of
   api.chargealong.io.
-- Errors keep the service's own words: `NotFound`, `Gone` for a site that was
-  removed, `BadRequest` and `RateLimited`.
+- Errors keep the service's own words: `NotFound`, `BadRequest` and
+  `RateLimited`. A removed site answers with `status: "removed"`.
 - `pageUrl` turns any row's path into its page on chargealong.io; builders for
   the pages rows only carry slugs for.
 - Options are checked against the service's bounds before a request goes out,

@@ -5,7 +5,6 @@ import {
   CONNECTORS,
   ChargeAlong,
   ChargeAlongError,
-  Gone,
   NotFound,
   RateLimited,
   countryPath,
@@ -118,12 +117,15 @@ describe("site", () => {
     expect(err.title).toBe("not found");
   });
 
-  it("throws Gone for a site that was removed, which a caller can tell from one that never existed", async () => {
-    const err = await client(recorder({ status: 410, title: "gone" }, 410)).site("abcd2345").catch((e) => e);
-    expect(err).toBeInstanceOf(Gone);
-    expect(err).toBeInstanceOf(ChargeAlongError);
-    expect(err).not.toBeInstanceOf(NotFound);
-    expect(err.status).toBe(410);
+  it("answers a removed site like any other, marked removed, since only its web page says 410", async () => {
+    const removed = { ...SITE, data: { ...SITE.data, site: { ...SITE.data.site, status: "removed" } } };
+    const detail = await client(recorder(removed)).site("hwqb4abf");
+    expect(detail.site.status).toBe("removed");
+  });
+
+  it("has no error for a status the API never sends", async () => {
+    const index = await import("./index");
+    expect("Gone" in index).toBe(false);
   });
 });
 

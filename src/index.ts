@@ -32,7 +32,7 @@ export {
   type VehiclesOptions,
 } from "./client";
 
-export { BadRequest, ChargeAlongError, Gone, NotFound, RateLimited } from "./errors";
+export { BadRequest, ChargeAlongError, NotFound, RateLimited } from "./errors";
 
 export {
   SITE_URL,
