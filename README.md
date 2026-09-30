@@ -133,6 +133,11 @@ seconds). Options outside the service's bounds throw before a request goes out.
 
 API reference: [api.chargealong.io/v1/openapi.json](https://api.chargealong.io/v1/openapi.json).
 
+Every charger the API returns also has a page of its own on the website,
+[chargealong.io](https://chargealong.io/). Building something that needs more
+than the free API gives? Say what at
+[chargealong.io/en/contact/](https://chargealong.io/en/contact/).
+
 ## Attribution
 
 Charging site data from Open Charge Map contributors, Transport for NSW and the

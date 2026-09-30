@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+- The package carries its README and changelog. 0.1.0 was published without
+  them, so its npm page said there was no README.
+- The README links the website beside the contact page.
+
 ## 0.1.0
 
 First release.

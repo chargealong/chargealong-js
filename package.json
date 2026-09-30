@@ -1,6 +1,6 @@
 {
   "name": "@chargealong/client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Find EV chargers near a point, plan a road trip through charging stops, and look up electric car charging speeds. Free and keyless.",
   "keywords": [
     "ev charger api",
