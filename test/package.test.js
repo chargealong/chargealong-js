@@ -25,7 +25,7 @@ describe("the published package", () => {
   // The User-Agent carries VERSION; npm publishes package.json's.
   it("says one version everywhere", () => {
     expect(VERSION).toBe(pkg.version);
-    expect(pkg.version).toBe("0.1.1");
+    expect(pkg.version).toBe("0.1.2");
     expect(readFileSync(new URL("../CHANGELOG.md", import.meta.url), "utf8")).toContain(`## ${pkg.version}`);
   });
 

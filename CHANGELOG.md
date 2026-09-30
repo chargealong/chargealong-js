@@ -1,6 +1,11 @@
 # Changelog
 
-## 0.1.1
+## 0.1.2
+
+First release published from GitHub Actions through trusted publishing, with
+provenance. Carries the changes below: 0.1.1 was tagged but never reached npm.
+
+## 0.1.1 (not published)
 
 - The package carries its README and changelog. 0.1.0 was published without
   them, so its npm page said there was no README.

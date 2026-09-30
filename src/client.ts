@@ -20,7 +20,7 @@ import {
   type VehicleDetail,
 } from "./types";
 
-export const VERSION = "0.1.1";
+export const VERSION = "0.1.2";
 export const DEFAULT_BASE_URL = "https://api.chargealong.io";
 
 /** The service reads a search once it holds this many letters or digits. */
