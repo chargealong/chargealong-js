@@ -10,9 +10,11 @@ const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url),
 // said "No README data found". This packs the tarball the way publish does and
 // reads what is in it.
 describe("the published package", () => {
-  const packed = JSON.parse(
-    execFileSync("npm", ["pack", "--dry-run", "--json", "--ignore-scripts"], { encoding: "utf8" }),
-  )[0].files.map((f) => f.path);
+  // npm 11 answers a list, npm 12 an object keyed by package name; the
+  // release job runs the newest npm, so both are read.
+  const out = JSON.parse(execFileSync("npm", ["pack", "--dry-run", "--json", "--ignore-scripts"], { encoding: "utf8" }));
+  const entry = Array.isArray(out) ? out[0] : out[pkg.name];
+  const packed = entry.files.map((f) => f.path);
 
   it("carries its README and changelog", () => {
     expect(packed).toContain("README.md");
